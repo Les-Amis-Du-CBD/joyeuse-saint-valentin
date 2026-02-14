@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Toi, Mon Amour ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Modern Gradient Background Animation */
+        @keyframes gradient-xy {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fecfef);
+            background-size: 400% 400%;
+            animation: gradient-xy 15s ease infinite;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Heart Pulse Animation */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            14% {
+                transform: scale(1.1);
+            }
+
+            28% {
+                transform: scale(1);
+            }
+
+            42% {
+                transform: scale(1.1);
+            }
+
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* Generic Float Animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Particle Container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar for Modal */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(225, 29, 72, 0.4);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(225, 29, 72, 0.6);
+        }
+
+        /* Card 3D Tilt Effect applied via JS, adding transition for smoothness */
+        .memory-card {
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        /* Final Surprise Animation */
+        .neon-text {
+            color: #fff;
+            text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #ff00de,
+                0 0 30px #ff00de,
+                0 0 40px #ff00de,
+                0 0 55px #ff00de,
+                0 0 75px #ff00de;
+        }
+
+        .writing-animation {
+            display: inline-block;
+            /* Use mask for writing effect to allow full glow without cropping */
+            -webkit-mask-image: linear-gradient(to right, black 50%, transparent 50%);
+            mask-image: linear-gradient(to right, black 50%, transparent 50%);
+            -webkit-mask-size: 200% 100%;
+            mask-size: 200% 100%;
+            -webkit-mask-position: 100% 0;
+            mask-position: 100% 0;
+            opacity: 1;
+            /* Make sure it's visible to the mask */
+            padding: 80px;
+            /* Keep padding for glow spread */
+            margin: -80px;
+            /* Compensate for padding in layout */
+        }
+
+        .animate-writing {
+            animation: maskReveal 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes maskReveal {
+            0% {
+                -webkit-mask-position: 100% 0;
+                mask-position: 100% 0;
+            }
+
+            100% {
+                -webkit-mask-position: 0 0;
+                mask-position: 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center text-rose-900 relative">
+
+    <!-- Particle Background Layer -->
+    <div id="particles-js"></div>
+
+    <!-- Main Content Container */ -->
+    <main class="relative z-10 w-full max-w-4xl px-4 py-8 flex flex-col items-center text-center">
+
+
+
+        <!-- Hero Section -->
+        <div
+            class="glass-panel p-8 md:p-12 rounded-3xl mb-10 w-full animate-fade-in-up transform transition-all duration-700 hover:scale-[1.01] will-change-transform">
+            <div class="mb-8 flex justify-center">
+                <div class="relative w-40 h-40 md:w-56 md:h-56 group cursor-pointer" onclick="toggleHeroVideo()">
+                    <!-- Glow Effect -->
+                    <div
+                        class="absolute inset-0 bg-rose-500 blur-3xl opacity-30 rounded-full animate-pulse group-hover:opacity-50 transition-opacity duration-500">
+                    </div>
+
+                    <!-- Video Container -->
+                    <div
+                        class="relative w-full h-full rounded-full overflow-hidden border-4 border-white/30 shadow-2xl transform transition-transform duration-700 hover:scale-105 hover:rotate-2 z-20">
+                        <video id="heroVideo" src="images/intro.mov" class="w-full h-full object-cover" autoplay loop
+                            muted playsinline
+                            onerror="this.parentElement.style.display='none'; document.getElementById('hero-heart-fallback').style.display='flex';">
+                        </video>
+
+                        <!-- Overlay Gradient -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-rose-900/40 to-transparent pointer-events-none">
+                        </div>
+                    </div>
+
+                    <!-- Audio Indicator -->
+                    <div
+                        class="absolute bottom-2 right-6 z-30 bg-white/20 backdrop-blur-md px-2 py-1 rounded-full text-[10px] text-white font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        Surprise
+                    </div>
+
+                    <!-- Fallback Heart (Hidden by default, shown if video fails) -->
+                    <div id="hero-heart-fallback" class="absolute inset-0 flex items-center justify-center z-10"
+                        style="display: none;">
+                        <svg class="w-24 h-24 md:w-32 md:h-32 text-rose-600 animate-heartbeat drop-shadow-2xl"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight drop-shadow-sm text-rose-800">
+                Joyeuse <span class="text-rose-600">Saint-Valentin</span>
+            </h1>
+
+            <p class="text-2xl md:text-3xl font-cursive text-rose-700 mb-8 opacity-90">
+                Mon amour éternel...<br>Imane
+            </p>
+
+            <div class="h-1 w-24 bg-rose-400 mx-auto rounded-full mb-8 opacity-60"></div>
+
+            <p class="text-lg md:text-xl leading-relaxed text-rose-900/80 max-w-2xl mx-auto mb-10 font-medium">
+                Voici notre histoire
+            </p>
+
+            <button onclick="openMemories(event)"
+                class="group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                <span class="relative z-10 flex items-center gap-2 text-lg">
+                    <span>Voir nos souvenirs</span>
+                    <span class="group-hover:rotate-12 transition-transform duration-300">📸</span>
+                </span>
+                <div
+                    class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                </div>
+            </button>
+        </div>
+
+        <p class="text-rose-800/60 text-sm font-medium">Fait avec tout mon ❤️ pour toi</p>
+    </main>
+
+    <!-- Memories Modal -->
+    <div id="memories-backdrop"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-500"
+        onclick="closeMemories()"></div>
+
+    <div id="memories-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500 p-4"
+        onclick="if(event.target === this) closeMemories()">
+        <div class="glass-modal w-full max-w-5xl h-[85vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col transform transition-transform duration-500 scale-95"
+            id="modal-content">
+
+            <!-- Header -->
+            <div class="p-6 border-b border-rose-200/30 flex justify-between items-center bg-white/40">
+                <h2 class="text-3xl md:text-4xl font-bold text-rose-800 flex items-center gap-2">
+                    <span class="animate-bounce">✨</span> Nos Moments
+                    <span id="memories-progress"
+                        class="text-sm md:text-lg font-normal text-rose-600 ml-4 opacity-80">(0/6)</span>
+                </h2>
+                <button onclick="closeMemories()"
+                    class="w-10 h-10 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-600 flex items-center justify-center transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div id="memories-scroll-container"
+                class="flex-1 overflow-y-auto p-6 md:p-8 bg-gradient-to-b from-transparent to-white/20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="memories-grid">
+                    <!-- Memories injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal (New) -->
+    <div id="detail-backdrop"
+        class="fixed inset-0 bg-black/60 backdrop-blur-md z-[60] opacity-0 pointer-events-none transition-opacity duration-300">
+    </div>
+    <div id="detail-modal"
+        class="fixed inset-0 z-[70] flex items-center justify-center pointer-events-none opacity-0 transition-all duration-300 p-4 md:p-8"
+        onclick="if(event.target === this) closeDetail()">
+        <div class="glass-modal w-full max-w-4xl max-h-[90vh] rounded-3xl shadow-2xl overflow-y-auto transform scale-95 transition-transform duration-300 relative"
+            id="detail-content">
+            <button onclick="closeDetail()"
+                class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-rose-600 flex items-center justify-center transition-colors shadow-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div id="detail-body" class="p-6 md:p-10">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Surprise Overlay -->
+    <div id="final-surprise"
+        class="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-1000">
+        <h1 class="font-cursive text-5xl md:text-8xl neon-text writing-animation" id="final-text">
+            Je t'aime Imane
+        </h1>
+        <!-- Message Form Container -->
+        <div id="message-container"
+            class="mt-8 w-full max-w-md px-4 opacity-0 transition-opacity duration-1000 translate-y-4">
+
+            <!-- Default Form -->
+            <form action="https://formspree.io/f/xzdarban" method="POST" id="love-form"
+                class="glass-panel p-6 rounded-2xl flex flex-col gap-4">
+                <p class="text-rose-800 font-serif text-lg text-center mb-2">Un petit mot pour moi ? 💌</p>
+                <textarea name="message" rows="3" required
+                    class="w-full p-3 rounded-lg bg-white/50 border border-rose-300/50 focus:outline-none focus:ring-2 focus:ring-rose-500/70 text-rose-900 placeholder-rose-600 resize-none"></textarea>
+                <button type="submit"
+                    class="px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                    Envoyer mon amour
+                </button>
+            </form>
+
+            <!-- Persistent Message Display (Hidden by default) -->
+            <div id="persistent-message"
+                class="hidden glass-panel p-8 rounded-2xl text-center border-2 border-rose-300/30">
+                <p class="text-sm font-bold text-rose-500 uppercase tracking-widest mb-4">Ton message éternel</p>
+                <p id="saved-message-content" class="text-2xl font-cursive text-rose-900 leading-relaxed italic">
+                    <!-- Injected via JS -->
+                </p>
+                <div class="mt-4 text-rose-400 text-xs">🔒 Gravé pour toujours</div>
+            </div>
+
+            <div id="form-success" class="hidden text-center text-white text-xl font-bold animate-bounce mt-4">
+                Message envoyé ! Je t'aime ❤️
+            </div>
+        </div>
+        <p class="text-rose-300 mt-12 text-xl md:text-2xl font-light opacity-0 transition-opacity duration-1000"
+            id="final-subtext">
+            Pour toujours et à jamais...
+        </p>
+        <p class="text-rose-500 mt-6 text-3xl font-cursive opacity-0 transition-opacity duration-1000"
+            id="final-signature">
+            Nino
+        </p>
+
+        <!-- Restart Button -->
+        <button onclick="resetStory()"
+            class="mt-12 px-8 py-3 rounded-full border border-white/30 text-white/50 hover:text-white hover:border-white hover:bg-white/10 transition-all duration-500 opacity-0 transform translate-y-4"
+            id="restart-btn">
+            ↺ Recommencer notre histoire
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto" autoplay>
+        <source src="images/music.mp3" type="audio/mpeg">
+        <source src="https://ia801608.us.archive.org/5/items/DrakeTeenageFever/Drake%20-%20Teenage%20Fever.mp3"
+            type="audio/mpeg">
+    </audio>
+
+    <button onclick="toggleMusic()"
+        class="fixed top-4 right-4 z-50 bg-white/20 backdrop-blur-md p-3 rounded-full hover:bg-white/40 transition-all shadow-lg animate-pulse"
+        title="Musique">
+        <span id="musicIcon">🎵</span>
+    </button>
+
+    <script>
+        // --- 💖 CONFIGURATION (Modifie tes textes/images ici) 💖 ---
+        const memories = [
+            {
+                emoji: "🎱",
+                title: "Le Début Inattendu",
+                shortText: "28 Janvier 2023. Une soirée billard, un film dans la voiture, et le début de tout.",
+                longText: "Tout a commencé ce 28 janvier 2023. On sortait d'un billard avec les gens d'Epitech. À l'époque, on jouait au jeu du chat et de la souris. Je te détestais pour des raisons futiles... mais mon dieu, ce que tu m'attirais. C'était physique, électrique.\n\nJ'ai pris mon courage à deux mains pour te proposer de passer la nuit dans ma voiture. On a mis le film '8 Mile', et l'ambiance a changé. J'ai tenté ma chance, maladroitement peut-être, mais sincèrement. Tu m'as fait comprendre que c'était réciproque mais en même temps craintive ce soir-là... Mais une semaine plus tard, même endroit, mêmes conditions, et là, c'est parti en vrille. C'était le chaos le plus doux de ma vie, le début de notre histoire.",
+                image: "images/début/IMG_5185.jpg",
+                date: "28 Janvier 2023",
+                location: "Ma voiture",
+                extraImages: [
+                    "images/début/9C90FE26-804F-4359-BDDE-00ADA5CB7DEB.mov",
+                    "images/début/A227A799-3FD0-4AEE-BD43-C01EB6F80347.mov"
+                ]
+            },
+            {
+                emoji: "✨",
+                title: "Premier Restaurant & Étoiles",
+                shortText: "Toi sublime comme une œuvre d'art, moi un peu moins... et cette route magique.",
+                longText: "9 mars 2023. Cassis, le bord de mer, le soir. Je nous revois encore. Tu portais cette robe incroyable, tu ressemblais littéralement à un tableau de Michel-Ange, une œuvre d'art vivante. Et moi... bon, je ressemblais un peu à un \"neuille\" à côté de ta splendeur, mais j'étais le plus fier des hommes.\n\nOn a tellement bien mangé, on s'est baladés dans les rues de Cassis, c'était simple et parfait. Mais le meilleur restait à venir. Sur le chemin du retour, on a emprunté cette route qu'on a baptisée la \"Route des étoiles\", car le bitume brillait de mille feux comme s'il était parsemé de paillettes pour nous guider. Cette nuit-là, on a fait l'amour toute la nuit, avec une tendresse et une passion que je n'oublierai jamais.",
+                image: "images/restau/89dd686c-f500-40d4-994e-b624a724cfce_Original.jpg",
+                date: "9 Mars 2023",
+                location: "Cassis & La Route des Étoiles",
+                extraImages: [
+                    "images/restau/IMG_6768_Original.jpg",
+                    "images/restau/IMG_3892.mov"
+                ]
+            },
+            {
+                emoji: "🍪",
+                title: "Notre Amour pour la Bouffe",
+                shortText: "Joliette, Cookiss, le Mucem... Notre petite routine parfaite pendant 2 ans.",
+                longText: "Pendant deux ans, c'était notre rituel sacré. On traînait toujours autour du cinéma de la Joliette, main dans la main. L'arrêt obligatoire ? Cookiss pour prendre notre dose de sucre.\n\nEnsuite, on allait se poser face à la mer, au Mucem ou vers la Major, et on refaisait le monde. Juste toi, moi, et nos discussions sans fin. Je finissais toujours par te ramener chez toi, mais ces moments de trajet et de partage étaient mes préférés. C'était simple, c'était nous.",
+                image: "images/bouffe/IMG_5193.jpg",
+                date: "Pendant 2 ans",
+                location: "Joliette & Mucem",
+                extraImages: [
+                    "images/bouffe/EAB14A52-A5D5-4D0A-80B8-88A2A20D0938.mov",
+                    "images/bouffe/IMG_5194.jpg"
+                ]
+            },
+            {
+                emoji: "😂",
+                title: "Nos Fous Rires",
+                shortText: "Des milkshakes renversés aux moments de câlins 'imposés'.",
+                longText: "Je garde un souvenir mémorable de cette sortie crêpes et milkshakes sur le Vieux Port avec Chris et Mérina. Mérina voulait absolument sa photo Insta parfaite, elle a voulu rapprocher les verres... et voilà. Le milkshake se renverse sur la jambe de Chris.\n\nLui, au lieu d'être dégoûté, ne pensait qu'à sauver son milkshake intact pour le boire... sauf qu'il lui a glissé des mains et a fini sur son pantalon. On a ri mais ri... pendant des heures, on en avait mal au ventre.\n\nEt que dire de cette fois en classe ? C'était ton premier jour de règles, tes émotions prenaient le dessus, et tu t'es retrouvée à me supplier à genoux, devant tout le monde, pour avoir juste \"5 minutes de câlins\". C'était tellement toi, tellement spontané et touchant. Je t'aime pour ces folies.",
+                image: "images/fourires/7D2F9286-5503-4C48-B2B7-FDE45A1EDAD5.mov",
+                date: "Pour la vie",
+                location: "Vieux Port & Partout",
+                extraImages: [
+                    "images/fourires/IMG_9542.mov",
+                    "images/fourires/IMG_9544.mov"
+                ]
+            },
+            {
+                emoji: "💍",
+                title: "La Promesse",
+                shortText: "Une bague, un serment, et mon soutien indéfectible malgré les tempêtes.",
+                longText: "Il y a eu cette épreuve terrible... Ce moment où tout a basculé quand ta famille a su pour nous. Malgré le désaccord, malgré la douleur de la séparation qui a suivi, je ne t'ai jamais abandonnée. Je restais là, au bout du fil, chaque soir, à veiller sur toi jusqu'à ce que ton souffle s'apaise et que tu t'endormes.\n\nPuis est venu janvier. Pour ton anniversaire, je t'ai offert ce qu'il y avait de plus précieux à mes yeux : une bague de promesse. Un symbole de mon engagement absolu. Une promesse d'amour que j'aurais tellement aimé pouvoir tenir jusqu'au bout, si la vie ne s'était pas mise en travers de nous.",
+                image: "images/promesse/IMG_5200.jpg",
+                date: "1er Janvier 2024",
+                location: "Dans nos cœurs",
+                extraImages: [
+                    "images/promesse/98C32B99-4482-4594-9592-60EA12E89FEF.mov",
+                    "images/promesse/D64727EE-6E9F-4991-9D99-56EAB4B62C87.mov"
+                ]
+            },
+            {
+                emoji: "🗼",
+                title: "Retrouvailles à Paris",
+                shortText: "De la douleur de la séparation à la joie intense de nos retrouvailles parisiennes.",
+                longText: "Le 28 juillet a marqué une pause douloureuse dans notre histoire. Je pensais vraiment que c'était la fin de nous deux... Mais le destin en a décidé autrement. En octobre, tu es revenue vers moi. J'étais l'homme le plus heureux du monde.\n\nTu étais déjà installée à Paris pour ta 4ème année. Je suis venu voir Drake en concert... sans toi, celle avec qui j'aurais le plus souhaité partager ce moment. Mais je suis revenu. Et là, on s'est enfin revus. Ce fut l'un des plus beaux jours de ma vie, un week-end court mais d'une intensité folle.\n\nJe suis revenu ensuite pour 4 jours, et j'ai passé l'un des meilleurs séjours de mon existence à tes côtés. On a vécu des moments inoubliables dans cette ville lumière qui nous a vus renaître. Je t'aime.",
+                image: "images/paris/IMG_5203.jpg",
+                date: "Octobre & Novembre",
+                location: "Paris",
+                extraImages: [
+                    "images/paris/TaVideoTabobine.mov",
+                    "images/paris/IMG_5205.jpg"
+                ]
+            }
+        ];
+
+        // Logic
+        const modalBackdrop = document.getElementById('memories-backdrop');
+        const modal = document.getElementById('memories-modal');
+        const modalContent = document.getElementById('modal-content');
+        const grid = document.getElementById('memories-grid');
+
+        const detailBackdrop = document.getElementById('detail-backdrop');
+        const detailModal = document.getElementById('detail-modal');
+        const detailContent = document.getElementById('detail-content');
+        const detailBody = document.getElementById('detail-body');
+
+        // Progress Tracking
+        const viewedMemories = new Set();
+        const progressEl = document.getElementById('memories-progress');
+
+        function updateProgress() {
+            if (progressEl) {
+                progressEl.textContent = `(${viewedMemories.size}/${memories.length})`;
+            }
+            updateLockStatus(); // Update the mystery card
+        }
+
+        function launchFinalSurprise() {
+            // Close all modals
+            closeDetail();
+            closeMemories();
+
+            // Show Overlay
+            const overlay = document.getElementById('final-surprise');
+            const text = document.getElementById('final-text');
+            const subtext = document.getElementById('final-subtext');
+            const signature = document.getElementById('final-signature');
+
+            overlay.classList.remove('pointer-events-none', 'opacity-0');
+            overlay.classList.add('opacity-100');
+
+            // Trigger animations
+            setTimeout(() => {
+                text.classList.add('animate-writing');
+            }, 500);
+
+            setTimeout(() => {
+                subtext.classList.remove('opacity-0');
+            }, 2500); // Appear sooner (2.5s instead of 4.5s)
+
+            setTimeout(() => {
+                document.getElementById('final-signature').classList.remove('opacity-0');
+            }, 3500);
+
+            setTimeout(() => {
+                const form = document.getElementById('message-container');
+                if (form) {
+                    form.classList.remove('opacity-0', 'translate-y-4');
+                }
+            }, 4500);
+
+            setTimeout(() => {
+                const btn = document.getElementById('restart-btn');
+                btn.classList.remove('opacity-0', 'translate-y-4');
+            }, 6000);
+
+            // Add extra heart rain
+            setInterval(createHeart, 200);
+        }
+
+        // Initial Render
+        function renderMemories() {
+            grid.innerHTML = memories.map((mem, index) => {
+                const isVideo = mem.image.match(/\.(mp4|webm|mov)$/i);
+
+                // Check if viewed
+                const isViewed = viewedMemories.has(index);
+
+                return `
+                <div onclick="openDetail(${index})" class="memory-card glass-panel rounded-2xl p-4 md:p-6 group hover:shadow-xl cursor-pointer opacity-0 translate-y-10 animate-slide-up hover:border-rose-300/50 transition-all relative" style="animation-delay: ${index * 150}md;">
+                    <!-- Viewed Indicator -->
+                    ${isViewed ? '<div class="absolute top-4 right-4 z-30 bg-green-500/80 text-white rounded-full p-1 shadow-lg pointer-events-none"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>' : ''}
+                    
+                    <div class="aspect-[4/3] w-full rounded-xl overflow-hidden mb-4 relative shadow-sm">
+                        <div class="absolute inset-0 bg-rose-500/0 group-hover:bg-rose-500/10 transition-colors duration-300 z-10"></div>
+                        ${isVideo
+                        ? `<video src="${mem.image}" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" muted loop playsinline autoplay></video>`
+                        : `<img src="${mem.image}" alt="${mem.title}" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700">`
+                    }
+                        <div class="absolute bottom-2 right-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">Voir plus +</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300 inline-block">${mem.emoji}</div>
+                        <h3 class="text-2xl font-bold text-rose-800 mb-2 font-serif">${mem.title}</h3>
+                        <p class="text-rose-900/80 leading-relaxed font-medium line-clamp-2">${mem.shortText}</p>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Add Locked Mystery Card at the end
+            const lockCard = document.createElement('div');
+            lockCard.className = "col-span-1 md:col-span-2 mt-8 p-8 rounded-3xl border-2 border-dashed border-rose-300/50 bg-white/30 flex flex-col items-center justify-center text-center relative overflow-hidden transition-all duration-500";
+            lockCard.id = "mystery-lock";
+            lockCard.innerHTML = `
+                <div class="text-5xl mb-4 transition-transform duration-500" id="lock-icon">🔒</div>
+                <h3 class="text-2xl font-bold text-rose-800 mb-2 font-serif" id="lock-title">Le Chapitre Final</h3>
+                <p class="text-rose-700/80 mb-6 max-w-md" id="lock-text">Explore nos 6 souvenirs pour déverrouiller la fin de l'histoire...</p>
+                
+                <!-- Progress Bar -->
+                <div class="w-full max-w-xs h-3 bg-rose-100/50 rounded-full overflow-hidden shadow-inner relative">
+                    <div id="lock-progress" class="h-full bg-gradient-to-r from-rose-400 to-pink-600 w-0 transition-all duration-700 ease-out"></div>
+                </div>
+                <p class="text-sm text-rose-600 mt-2 font-bold" id="lock-counter">0 / 6</p>
+            `;
+            grid.appendChild(lockCard);
+
+            // Apply 3D Tilt Effect
+            document.querySelectorAll('.memory-card').forEach(card => {
+                let rect;
+                let frameId;
+
+                card.addEventListener('mouseenter', (e) => {
+                    rect = card.getBoundingClientRect();
+                    card.style.willChange = 'transform';
+                });
+
+                card.addEventListener('mousemove', (e) => {
+                    if (!rect) return;
+
+                    // Throttle with rAF
+                    if (frameId) cancelAnimationFrame(frameId);
+
+                    frameId = requestAnimationFrame(() => {
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+
+                        // Limit rotation to avoid extreme angles
+                        const rotateX = ((y - centerY) / centerY) * -8;
+                        const rotateY = ((x - centerX) / centerX) * 8;
+
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    });
+                });
+
+                card.addEventListener('mouseleave', (e) => {
+                    if (frameId) cancelAnimationFrame(frameId);
+                    rect = null;
+                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                    e.currentTarget.style.willChange = 'auto'; // Cleanup
+                });
+            });
+
+            updateLockStatus(); // Initial check
+
+            // Optimize Video Playback: Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play().catch(() => { });
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('video').forEach(video => {
+                video.muted = true;
+                observer.observe(video);
+            });
+        }
+
+        function updateLockStatus() {
+            const progress = (viewedMemories.size / memories.length) * 100;
+            const bar = document.getElementById('lock-progress');
+            const counter = document.getElementById('lock-counter');
+            const icon = document.getElementById('lock-icon');
+            const title = document.getElementById('lock-title');
+            const text = document.getElementById('lock-text');
+            const card = document.getElementById('mystery-lock');
+
+            if (bar) bar.style.width = `${progress}%`;
+            if (counter) counter.innerText = `${viewedMemories.size} / ${memories.length}`;
+
+            if (viewedMemories.size === memories.length) {
+                // Unlocked State
+                if (icon) icon.innerText = "🔓";
+                if (title) title.innerText = "Histoire Complète";
+                if (text) text.innerText = "Ferme cette fenêtre maintenant pour découvrir la surprise...";
+                if (card) {
+                    card.classList.remove('border-dashed', 'border-rose-300/50', 'bg-white/30');
+                    card.classList.add('bg-rose-100', 'border-rose-500', 'shadow-2xl', 'animate-pulse', 'cursor-pointer');
+                    card.onclick = closeMemories; // Clicking it also closes
+                }
+            }
+        }
+
+        function openDetail(index) {
+            const mem = memories[index];
+
+            // Add to viewed set
+            if (!viewedMemories.has(index)) {
+                viewedMemories.add(index);
+                updateProgress();
+                // Update grid to show checkmark without full re-render if possible, or just re-render
+                const card = document.querySelectorAll('.memory-card')[index];
+                if (card) {
+                    // Add checkmark dynamically
+                    const check = document.createElement('div');
+                    check.className = "absolute top-4 right-4 z-30 bg-green-500/80 text-white rounded-full p-1 shadow-lg pointer-events-none animate-bounce";
+                    check.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+                    card.appendChild(check);
+                }
+            }
+            let extraImagesHTML = '';
+            if (mem.extraImages && mem.extraImages.length > 0) {
+                extraImagesHTML = `
+                    <div class="grid grid-cols-1 gap-6">
+                        ${mem.extraImages.map(media => {
+                    const isVideo = media.match(/\.(mp4|webm|mov)$/i);
+                    return `
+                            <div class="rounded-2xl overflow-hidden h-80 md:h-[32rem] shadow-lg hover:scale-[1.02] transition-transform duration-300 relative group aspect-[9/16]">
+                                ${isVideo
+                            ? `<video src="${media}" class="w-full h-full object-cover" controls playsinline loop></video>`
+                            : `<img src="${media}" class="w-full h-full object-cover cursor-pointer" onclick="window.open(this.src, '_blank')">`
+                        }
+                            </div>
+                            `;
+                }).join('')}
+                    </div>
+                `;
+            }
+
+            const isVideo = mem.image.match(/\.(mp4|webm|mov)$/i);
+
+            detailBody.innerHTML = `
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <!-- Media Column (Left) -->
+                    <div class="w-full md:w-1/2 flex flex-col gap-4">
+                        <div class="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] relative group">
+                            ${isVideo
+                    ? `<video src="${mem.image}" class="w-full h-full object-cover" controls playsinline loop autoplay muted></video>`
+                    : `<img src="${mem.image}" class="w-full h-full object-cover" alt="${mem.title}">`
+                }
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60 pointer-events-none"></div>
+                            <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                                <p class="text-sm font-bold opacity-90 uppercase tracking-widest mb-1">${mem.date || ''}</p>
+                                <p class="text-xs opacity-75 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> ${mem.location || ''}</p>
+                            </div>
+                        </div>
+                        ${extraImagesHTML}
+                    </div>
+
+                    <!-- Text Column (Right) - Sticky -->
+                    <div class="w-full md:w-1/2 flex flex-col md:sticky md:top-0 self-start pt-2">
+                        <div class="text-6xl mb-4 animate-bounce inline-block">${mem.emoji}</div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-rose-800 mb-6 font-serif leading-tight">${mem.title}</h2>
+                        <div class="w-20 h-1 bg-rose-400 mb-6 rounded-full"></div>
+                        <div class="prose prose-rose max-w-none">
+                            <p class="text-lg text-rose-900/80 leading-loose whitespace-pre-line font-medium">${mem.longText || mem.shortText}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            detailBackdrop.classList.remove('pointer-events-none', 'opacity-0');
+            detailModal.classList.remove('pointer-events-none', 'opacity-0');
+            detailContent.classList.remove('scale-95');
+            detailContent.classList.add('scale-100');
+
+            // Reset Scroll
+            detailContent.scrollTop = 0;
+
+            // Force play videos in modal
+            setTimeout(() => {
+                const modalVideos = detailModal.querySelectorAll('video');
+                modalVideos.forEach(v => {
+                    v.muted = true;
+                    v.play().catch(e => console.log("Modal autoplay blocked:", e));
+                });
+            }, 100);
+        }
+
+        function closeDetail() {
+            detailBackdrop.classList.add('pointer-events-none', 'opacity-0');
+            detailModal.classList.add('pointer-events-none', 'opacity-0');
+            detailContent.classList.remove('scale-100');
+            detailContent.classList.add('scale-95');
+
+            // Check if all memories viewed
+            if (viewedMemories.size === memories.length && !document.body.classList.contains('surprise-shown')) {
+                document.body.classList.add('surprise-shown');
+                setTimeout(launchFinalSurprise, 500); // Launch after closing
+            }
+        }
+
+        // Epic Explosion Effect
+        function spawnExplosion(x, y) {
+            // 1. Shockwave (CSS Animation favored over JS animate API where simple)
+            const shockwave = document.createElement('div');
+            Object.assign(shockwave.style, {
+                position: 'fixed', top: '50%', left: '50%',
+                width: '0', height: '0', borderRadius: '50%',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'rgba(244, 63, 94, 0.2)',
+                zIndex: '9998', pointerEvents: 'none',
+                willChange: 'width, height, opacity'
+            });
+            document.body.appendChild(shockwave);
+
+            shockwave.animate([
+                { width: '0', height: '0', opacity: 0.8 },
+                { width: '250vmax', height: '250vmax', opacity: 0 }
+            ], { duration: 1500, easing: 'ease-out' }).onfinish = () => shockwave.remove();
+
+            // 2. Hearts Explosion (Batched Reflow)
+            const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝', '💟'];
+            const particleCount = 100; // Optimized count for mobile/performance
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 0; i < particleCount; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                Object.assign(heart.style, {
+                    position: 'fixed', left: x + 'px', top: y + 'px',
+                    fontSize: Math.random() * 30 + 10 + 'px',
+                    pointerEvents: 'none', zIndex: '9999',
+                    willChange: 'transform, opacity'
+                });
+
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * Math.max(window.innerWidth, window.innerHeight) * 0.8 + 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                // Native WAAPI is performant
+                heart.animate([
+                    { transform: 'translate(0, 0) rotate(0deg) scale(0)', opacity: 1 },
+                    { transform: `translate(${tx * 0.2}px, ${ty * 0.2}px) rotate(${Math.random() * 360}deg) scale(1.5)`, opacity: 1, offset: 0.2 },
+                    { transform: `translate(${tx}px, ${ty}px) rotate(${Math.random() * 1080}deg) scale(0)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 1500 + 1500,
+                    easing: 'cubic-bezier(0.1, 0.9, 0.2, 1)'
+                }).onfinish = () => heart.remove();
+
+                fragment.appendChild(heart);
+            }
+            document.body.appendChild(fragment); // Single Reflow
+        }
+
+        function openMemories(event) {
+            // Get click coordinates if event exists, otherwise center of screen
+            let x, y;
+            if (event) {
+                const rect = event.target.getBoundingClientRect();
+                x = rect.left + rect.width / 2;
+                y = rect.top + rect.height / 2;
+            } else {
+                x = window.innerWidth / 2;
+                y = window.innerHeight / 2;
+            }
+
+            // Trigger Epic Explosion
+            spawnExplosion(x, y);
+
+            // Hide Main Card smoothly
+            const hero = document.querySelector('.glass-panel');
+            hero.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+            hero.style.transform = 'scale(1.5) opacity(0)'; // Effect of "flying into" the card
+            hero.style.opacity = '0';
+            hero.style.filter = 'blur(20px)';
+
+            // Open Modal with longer delay to appreciate the explosion
+            setTimeout(() => {
+                modalBackdrop.classList.remove('pointer-events-none', 'opacity-0');
+                modal.classList.remove('pointer-events-none');
+                modal.classList.add('opacity-100');
+
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+
+                // Reset Scroll
+                const scrollContainer = document.getElementById('memories-scroll-container');
+                if (scrollContainer) scrollContainer.scrollTop = 0;
+
+                // Re-trigger animations by re-rendering slightly or adding classes
+                renderMemories();
+
+                // Animate cards in
+                const cards = document.querySelectorAll('.memory-card');
+                cards.forEach((card, i) => {
+                    card.style.animation = `slideUpFade 0.8s ease-out ${i * 0.15 + 0.3}s forwards`;
+                });
+            }, 800); // 800ms delay
+        }
+
+        function closeMemories() {
+            modalBackdrop.classList.add('pointer-events-none', 'opacity-0');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+
+            // Restore Hero Section
+            const hero = document.querySelector('.glass-panel');
+            hero.style.transform = 'none';
+            hero.style.opacity = '1';
+            hero.style.filter = 'none';
+        }
+
+        // Music Control
+        const bgMusic = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isMusicPlaying = false;
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicIcon.textContent = "🎵";
+                isMusicPlaying = false;
+            } else {
+                bgMusic.volume = 0.2; // Low volume as requested
+                bgMusic.play().then(() => {
+                    musicIcon.textContent = "⏸️";
+                    isMusicPlaying = true;
+                    // Visual confirmation
+                    const toast = document.createElement('div');
+                    toast.className = "fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50 animate-bounce";
+                    toast.innerText = "Musique activée ! 🎵";
+                    document.body.appendChild(toast);
+                    setTimeout(() => toast.remove(), 3000);
+                }).catch(e => {
+                    console.log("Music blocked or failed:", e);
+                    musicIcon.textContent = "❌";
+                    // Visual error
+                    const toast = document.createElement('div');
+                    toast.className = "fixed top-20 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg z-50";
+                    toast.innerHTML = "Erreur audio. <br>Cliquez ici ou téléchargez le MP3 !";
+                    document.body.appendChild(toast);
+                    setTimeout(() => toast.remove(), 5000);
+                });
+            }
+        }
+
+        // Try to auto-play on first click anywhere if not started
+        document.body.addEventListener('click', () => {
+            if (!isMusicPlaying) {
+                toggleMusic();
+            }
+        }, { once: true });
+
+        // Hero Video Sound Toggle
+        function toggleHeroVideo() {
+            const video = document.getElementById('heroVideo');
+            if (video && video.readyState >= 2) { // check if loaded
+                video.muted = !video.muted;
+            }
+        }
+
+        // Reset Story (Soft Restart)
+        function resetStory() {
+            // 1. Hide Surprise Overlay
+            const overlay = document.getElementById('final-surprise');
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('surprise-shown');
+
+            // Reset Surprise Elements animations
+            document.getElementById('final-text').classList.remove('animate-writing');
+            document.getElementById('final-subtext').classList.add('opacity-0');
+            document.getElementById('final-signature').classList.add('opacity-0');
+            document.getElementById('restart-btn').classList.add('opacity-0', 'translate-y-4');
+
+            // 2. Reset Memory Progress
+            viewedMemories.clear();
+            updateProgress(); // Will reset counters and locked card
+            renderMemories(); // Will remove checkmarks
+
+            // 3. Restore Hero Section
+            const hero = document.querySelector('.glass-panel');
+            hero.style.opacity = '1';
+            hero.style.transform = 'none';
+            hero.style.filter = 'none';
+
+            // 4. Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Note: Music continues playing without interruption (volume 0.2)
+        }
+
+        // Advanced Heart Rain with varying speeds and oscillation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['❤️', '💖', '💕', '🌸', '❤️'][Math.floor(Math.random() * 5)];
+            heart.classList.add('heart-particle');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's'; // 3-6s
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 400);
+
+        // Mouse Trail Effect
+        document.addEventListener('mousemove', function (e) {
+            if (Math.random() > 0.1) return; // Don't create on every frame
+
+            const trail = document.createElement('div');
+            trail.innerHTML = '❤️';
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.pointerEvents = 'none';
+            trail.style.transform = 'translate(-50%, -50%)';
+            trail.style.zIndex = '1000';
+            trail.style.fontSize = '12px';
+            trail.style.animation = 'fadeOut 1s forwards';
+
+            document.body.appendChild(trail);
+
+            setTimeout(() => trail.remove(), 1000);
+        });
+
+        // Animations CSS injection
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes slideUpFade {
+                from { opacity: 0; transform: translateY(40px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes fadeOut {
+                to { opacity: 0; transform: translate(-50%, -150%) scale(0.5); }
+            }
+
+            .heart-particle {
+                position: fixed;
+                top: -50px;
+                z-index: -1;
+                user-select: none;
+                animation-name: fall;
+                animation-timing-function: linear;
+                will-change: transform; /* Hardware Acceleration */
+            }
+
+            @keyframes fall {
+                0% { transform: translateY(0) rotate(0deg) translateX(0); }
+                50% { transform: translateY(50vh) rotate(180deg) translateX(20px); }
+                100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // Check for existing message on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMessage = localStorage.getItem('eternal-love-message');
+            if (savedMessage) {
+                showPersistentMessage(savedMessage);
+            }
+        });
+
+        function showPersistentMessage(msg) {
+            const form = document.getElementById('love-form');
+            const display = document.getElementById('persistent-message');
+            const content = document.getElementById('saved-message-content');
+
+            if (form) form.classList.add('hidden'); // Use classList.add('hidden')
+            form.style.display = 'none'; // Force hide
+
+            if (display && content) {
+                content.innerText = `"${msg}"`;
+                display.classList.remove('hidden');
+            }
+        }
+
+        // Handle Form Submission (AJAX)
+        const form = document.getElementById('love-form');
+        if (form) {
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const textarea = form.querySelector('textarea');
+                const originalText = btn.innerHTML;
+                const messageContent = textarea.value;
+
+                btn.disabled = true;
+                btn.innerHTML = 'Envoi en cours... ⏳';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Success!
+                        localStorage.setItem('eternal-love-message', messageContent);
+
+                        // Transition UI
+                        form.style.display = 'none';
+                        document.getElementById('form-success').classList.remove('hidden');
+
+                        // Show persistent message after delay
+                        setTimeout(() => {
+                            document.getElementById('form-success').classList.add('hidden');
+                            showPersistentMessage(messageContent);
+                        }, 3000);
+
+                        // Confetti explosion or something?
+                        for (let i = 0; i < 3; i++) setTimeout(() => spawnExplosion(window.innerWidth / 2, window.innerHeight / 2), i * 300);
+                    } else {
+                        throw new Error('Erreur');
+                    }
+                } catch (error) {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    alert("Oups, l'envoi a échoué. Vérifie ta connexion !");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
