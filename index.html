@@ -333,40 +333,51 @@
 
     <!-- Final Surprise Overlay -->
     <div id="final-surprise"
-        class="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-1000">
-        <h1 class="font-cursive text-5xl md:text-8xl neon-text writing-animation" id="final-text">
+        class="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-start pt-24 md:pt-40 gap-6 md:gap-8 opacity-0 pointer-events-none transition-opacity duration-1000 p-4 overflow-y-auto custom-scrollbar">
+        <h1 class="font-cursive text-4xl md:text-7xl neon-text writing-animation shrink-0 text-center" id="final-text">
             Je t'aime Imane
         </h1>
         <!-- Message Form Container -->
+        <!-- Partner's Letter (Replaces Form) -->
         <div id="message-container"
-            class="mt-8 w-full max-w-md px-4 opacity-0 transition-opacity duration-1000 translate-y-4">
+            class="w-full max-w-2xl px-4 opacity-0 transition-opacity duration-1000 translate-y-4 h-[60vh] flex flex-col shrink-1">
 
-            <!-- Default Form -->
-            <form action="https://formspree.io/f/xzdarban" method="POST" id="love-form"
-                class="glass-panel p-6 rounded-2xl flex flex-col gap-4">
-                <p class="text-rose-200 font-serif text-lg text-center mb-2">Un petit mot pour moi ? 💌</p>
-                <textarea name="message" rows="3" required
-                    class="w-full p-3 rounded-lg bg-black/40 border border-rose-500/30 focus:outline-none focus:ring-2 focus:ring-rose-500/70 text-rose-100 placeholder-rose-400/60 resize-none"></textarea>
-                <button type="submit"
-                    class="px-6 py-3 bg-gradient-to-r from-rose-600 to-pink-700 text-white font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] hover:-translate-y-0.5 transition-all duration-300 border border-white/10">
-                    Envoyer mon amour
-                </button>
-            </form>
+            <!-- Chat Container (Full Height) -->
+            <div id="chat-interface"
+                class="flex-1 bg-black/60 border border-rose-500/30 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_30px_rgba(244,63,94,0.2)] backdrop-blur-md relative group">
 
-            <!-- Persistent Message Display (Hidden by default) -->
-            <div id="persistent-message"
-                class="hidden glass-panel p-8 rounded-2xl text-center border-2 border-rose-500/30 bg-black/40">
-                <p class="text-sm font-bold text-rose-400 uppercase tracking-widest mb-4 drop-shadow">Ton message
-                    éternel</p>
-                <p id="saved-message-content"
-                    class="text-2xl font-cursive text-rose-100 leading-relaxed italic drop-shadow-md">
-                    <!-- Injected via JS -->
-                </p>
-                <div class="mt-4 text-rose-500/80 text-xs font-semibold">🔒 Gravé pour toujours</div>
-            </div>
+                <!-- Header -->
+                <div class="p-4 bg-white/5 border-b border-rose-500/20 flex justify-between items-center">
+                    <h3 class="text-xl font-cursive text-rose-200">Notre Espace Secret 💬</h3>
+                    <div class="flex gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
+                    </div>
+                </div>
 
-            <div id="form-success" class="hidden text-center text-white text-xl font-bold animate-bounce mt-4">
-                Message envoyé ! Je t'aime ❤️
+                <!-- Messages Area -->
+                <div id="chat-messages" class="flex-1 p-6 overflow-y-auto custom-scrollbar flex flex-col gap-4">
+                    <!-- Messages will appear here -->
+                    <div class="text-center text-white/20 text-sm mt-10 italic animate-pulse">Chargement de votre
+                        histoire...</div>
+                </div>
+
+                <!-- Input Area -->
+                <form id="chat-form" class="p-4 bg-white/5 border-t border-white/10 flex gap-3 items-end">
+                    <input type="text" id="chat-pseudo" class="hidden" value="Imane">
+                    <textarea id="chat-input" rows="1" required placeholder="Écris un message pour l'éternité..."
+                        class="flex-1 p-4 rounded-xl bg-black/50 border border-rose-500/30 focus:outline-none focus:ring-2 focus:ring-rose-500/50 text-rose-100 placeholder-rose-400/40 resize-none text-base custom-scrollbar"
+                        style="min-height: 56px; max-height: 120px;"></textarea>
+                    <button type="submit"
+                        class="p-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-xl transition-all shadow-lg hover:shadow-rose-500/20 active:scale-95 flex-shrink-0">
+                        <svg class="w-6 h-6 transform rotate-90" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+                            </path>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
         <p class="text-rose-300 mt-12 text-xl md:text-2xl font-light opacity-0 transition-opacity duration-1000"
@@ -1069,74 +1080,104 @@
             }
         `;
         document.head.appendChild(styleSheet);
+    </script>
 
-        // Check for existing message on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedMessage = localStorage.getItem('eternal-love-message');
-            if (savedMessage) {
-                showPersistentMessage(savedMessage);
-            }
-        });
+    <script type="module">
+        // Import Firebase from CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        function showPersistentMessage(msg) {
-            const form = document.getElementById('love-form');
-            const display = document.getElementById('persistent-message');
-            const content = document.getElementById('saved-message-content');
+        const firebaseConfig = {
+            apiKey: "AIzaSyDS9gpoKI2CCW8rVeMGmJ0Eu1hA5SnVNbI",
+            authDomain: "tchat-amour.firebaseapp.com",
+            projectId: "tchat-amour",
+            storageBucket: "tchat-amour.firebasestorage.app",
+            messagingSenderId: "834305461747",
+            appId: "1:834305461747:web:70a1bfb8cdc823770b5686",
+            measurementId: "G-FC0BWYEHJE"
+        };
 
-            if (form) form.classList.add('hidden'); // Use classList.add('hidden')
-            form.style.display = 'none'; // Force hide
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-            if (display && content) {
-                content.innerText = `"${msg}"`;
-                display.classList.remove('hidden');
-            }
+        // Chat Logic
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Identity (Simple LocalStorage ID to distinguish "Me" vs "Them")
+        let myId = localStorage.getItem('chat_user_id');
+        if (!myId) {
+            myId = 'user_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('chat_user_id', myId);
         }
 
-        // Handle Form Submission (AJAX)
-        const form = document.getElementById('love-form');
-        if (form) {
-            form.addEventListener('submit', async function (e) {
-                e.preventDefault();
-                const btn = form.querySelector('button');
-                const textarea = form.querySelector('textarea');
-                const originalText = btn.innerHTML;
-                const messageContent = textarea.value;
+        // Real-time Listener
+        const q = query(collection(db, "messages"), orderBy("createdAt", "asc"));
 
+        onSnapshot(q, (snapshot) => {
+            chatMessages.innerHTML = ''; // Clear to rebuild (simple version)
+
+            if (snapshot.empty) {
+                chatMessages.innerHTML = '<div class="text-center text-white/30 text-sm mt-4 italic">Le début de votre conversation...</div>';
+                return;
+            }
+
+            snapshot.forEach((doc) => {
+                const msg = doc.data();
+                const isMe = msg.senderId === myId;
+
+                const bubble = document.createElement('div');
+                // Use a wider max-width for long letters
+                bubble.className = `max-w-[85%] md:max-w-[70%] p-4 rounded-2xl text-base leading-relaxed whitespace-pre-line shadow-md ${isMe
+                    ? 'bg-rose-600/90 text-white self-end rounded-br-none border border-rose-500'
+                    : 'bg-white/10 text-rose-100 self-start rounded-bl-none border border-white/10 backdrop-blur-sm'}`;
+
+                // Format text nicely (handle newlines)
+                bubble.innerText = msg.text;
+
+                chatMessages.appendChild(bubble);
+            });
+
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        // Send Message
+        if (chatForm) {
+            chatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const text = chatInput.value.trim();
+                if (!text) return;
+
+                const btn = chatForm.querySelector('button');
+                const originalContent = btn.innerHTML;
                 btn.disabled = true;
-                btn.innerHTML = 'Envoi en cours... ⏳';
+                btn.innerHTML = '...';
 
                 try {
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                    await addDoc(collection(db, "messages"), {
+                        text: text,
+                        senderId: myId,
+                        createdAt: serverTimestamp()
                     });
-
-                    if (response.ok) {
-                        // Success!
-                        localStorage.setItem('eternal-love-message', messageContent);
-
-                        // Transition UI
-                        form.style.display = 'none';
-                        document.getElementById('form-success').classList.remove('hidden');
-
-                        // Show persistent message after delay
-                        setTimeout(() => {
-                            document.getElementById('form-success').classList.add('hidden');
-                            showPersistentMessage(messageContent);
-                        }, 3000);
-
-                        // Confetti explosion or something?
-                        for (let i = 0; i < 3; i++) setTimeout(() => spawnExplosion(window.innerWidth / 2, window.innerHeight / 2), i * 300);
-                    } else {
-                        throw new Error('Erreur');
-                    }
-                } catch (error) {
-                    btn.innerHTML = originalText;
+                    chatInput.value = '';
+                } catch (e) {
+                    console.error("Error sending:", e);
+                    alert("Erreur d'envoi. Vérifie ta connexion.");
+                } finally {
                     btn.disabled = false;
-                    alert("Oups, l'envoi a échoué. Vérifie ta connexion !");
+                    btn.innerHTML = originalContent;
+                    chatInput.focus();
+                }
+            });
+
+            // Enter to send
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    chatForm.dispatchEvent(new Event('submit'));
                 }
             });
         }
