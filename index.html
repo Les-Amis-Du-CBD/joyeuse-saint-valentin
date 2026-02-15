@@ -1128,16 +1128,31 @@
 
             snapshot.forEach((doc) => {
                 const msg = doc.data();
+
+                // 💌 SPECIAL LOGIC: Layout changes for long texts (Letters)
+                // We keep the beautiful styling for long messages, but we trust the senderId now.
+                const isLetter = msg.text.length > 500;
+
                 const isMe = msg.senderId === myId;
 
                 const bubble = document.createElement('div');
-                // Use a wider max-width for long letters
-                bubble.className = `max-w-[85%] md:max-w-[70%] p-4 rounded-2xl text-base leading-relaxed whitespace-pre-line shadow-md ${isMe
-                    ? 'bg-rose-600/90 text-white self-end rounded-br-none border border-rose-500'
-                    : 'bg-white/10 text-rose-100 self-start rounded-bl-none border border-white/10 backdrop-blur-sm'}`;
 
-                // Format text nicely (handle newlines)
-                bubble.innerText = msg.text;
+                if (isLetter) {
+                    // 📜 LETTER STYLE (Wide & Elegant)
+                    // If ISME (She sent it, and views it) -> Right (Rose) "Ma Lettre"
+                    // If !ISME (You view it) -> Left (Gray) "Sa Lettre"
+                    bubble.className = `max-w-[95%] md:max-w-[85%] p-6 rounded-2xl text-base leading-relaxed whitespace-pre-line shadow-[0_0_15px_rgba(244,63,94,0.3)] backdrop-blur-md border ${isMe
+                        ? 'bg-rose-900/80 text-white self-end rounded-br-none border-rose-500/50'
+                        : 'bg-black/60 text-rose-100 self-start rounded-bl-none border-white/10'}`;
+
+                    bubble.innerHTML = `<span class="text-2xl block mb-2">${isMe ? '📝 Ma Lettre' : '💌 Sa Lettre'}</span>${msg.text}`;
+                } else {
+                    // 💬 STANDARD MESSAGES
+                    bubble.className = `max-w-[80%] md:max-w-[70%] p-3 px-4 rounded-2xl text-sm md:text-base leading-relaxed whitespace-pre-line shadow-sm border ${isMe
+                        ? 'bg-rose-600 text-white self-end rounded-br-sm border-rose-500 shadow-rose-900/20'
+                        : 'bg-white/10 text-rose-100 self-start rounded-bl-sm border-white/20 backdrop-blur-md'}`;
+                    bubble.innerText = msg.text;
+                }
 
                 chatMessages.appendChild(bubble);
             });
