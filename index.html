@@ -374,17 +374,17 @@
 
     <!-- Final Surprise Overlay -->
     <div id="final-surprise"
-        class="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-start pt-24 md:pt-40 gap-6 md:gap-8 opacity-0 pointer-events-none transition-opacity duration-1000 p-4 overflow-y-auto custom-scrollbar">
-        <h1 class="font-cursive text-4xl md:text-7xl neon-text writing-animation shrink-0 text-center" id="final-text">
+        class="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-start pt-12 md:pt-32 gap-6 md:gap-8 opacity-0 pointer-events-none transition-opacity duration-1000 overflow-y-auto custom-scrollbar pb-12">
+        <h1 class="font-cursive text-4xl md:text-7xl neon-text writing-animation shrink-0 text-center px-4" id="final-text">
             Je t'aime Imane
         </h1>
         
         <!-- Main Content Area: Chat + Playlist -->
         <div id="message-container"
-            class="w-full max-w-6xl px-4 opacity-0 transition-opacity duration-1000 translate-y-4 min-h-[60vh] flex flex-col lg:flex-row gap-6 shrink-1">
+            class="w-full max-w-6xl px-4 opacity-0 transition-opacity duration-1000 translate-y-4 flex flex-col lg:flex-row gap-6">
 
             <!-- Playlist Container (Left side on desktop, top on mobile) -->
-            <div id="playlist-container" class="flex-1 lg:max-w-md bg-black/60 border border-blue-500/30 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_30px_rgba(59,130,246,0.2)] backdrop-blur-md relative group">
+            <div id="playlist-container" class="w-full lg:flex-1 lg:max-w-md h-[45vh] lg:h-auto bg-black/60 border border-blue-500/30 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_30px_rgba(59,130,246,0.2)] backdrop-blur-md relative group">
                 <!-- Header -->
                 <div class="p-4 bg-white/5 border-b border-blue-500/20 flex justify-between items-center">
                     <h3 class="text-xl font-cursive text-blue-200">Nos Musiques 🎵</h3>
@@ -417,7 +417,7 @@
 
             <!-- Chat Container (Right side on desktop, bottom on mobile) -->
             <div id="chat-interface"
-                class="flex-1 bg-black/60 border border-rose-500/30 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_30px_rgba(244,63,94,0.2)] backdrop-blur-md relative group">
+                class="w-full lg:flex-1 h-[55vh] lg:h-auto bg-black/60 border border-rose-500/30 rounded-2xl overflow-hidden flex flex-col shadow-[0_0_30px_rgba(244,63,94,0.2)] backdrop-blur-md relative group">
 
                 <!-- Header -->
                 <div class="p-4 bg-white/5 border-b border-rose-500/20 flex justify-between items-center">
